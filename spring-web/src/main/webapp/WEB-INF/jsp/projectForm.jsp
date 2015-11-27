@@ -9,11 +9,12 @@
 	<title>Spring Activity - Project Management</title>
 </head>
 <body>
+	<jsp:include page="headers.jsp"/>
 	<h1>Project Form</h1>
 	<form:form method="POST" accept-charset="UTF-8" commandName="project">
 		<div>Project Name: <form:input path="name"/></div>
 		<div>Start Date: <form:input type="date" path="startDate"/></div>
-		<div>End Date: <form:input type="date" path="endDate"/></div>
+		<div>End Date: <form:input type="date" path="endDate"/><form:errors class="error" path="endDate"/></div>
 		<br>
 		<div>
 		Select Members:<br>

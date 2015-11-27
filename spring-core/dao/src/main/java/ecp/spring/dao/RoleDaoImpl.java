@@ -37,9 +37,9 @@ public class RoleDaoImpl implements RoleDao{
         logger.info("Role Dao updateRole() method");
     	sessionFactory.getCurrentSession().update(role);
     }
-    public List listRolesWithPerson(String query){
+    public List listRolesWithPerson(){
         logger.info("Role Dao listRolesWithPerson() method");
-        List list = sessionFactory.getCurrentSession().createQuery(query).setCacheable(true).setResultTransformer(Transformers.aliasToBean(Role.class)).list();
+        List list = sessionFactory.getCurrentSession().createQuery("select distinct proles.roleId as roleId, proles.roleType as roleType from Person person INNER JOIN person.roles as proles").setCacheable(true).setResultTransformer(Transformers.aliasToBean(Role.class)).list();
         return list;
     }
     public void addRole(Role role){

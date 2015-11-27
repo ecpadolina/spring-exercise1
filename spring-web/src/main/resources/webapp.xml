@@ -49,6 +49,7 @@
     <property name="commandClass" value="ecp.spring.model.Project"/>
     <property name="formView" value="projectForm"/>
     <property name="successView" value="home"/>
+    <property name="validator" ref="projectValidator"/>
   </bean>
 
 
@@ -72,6 +73,7 @@
     <property name="commandClass" value="ecp.spring.model.Project"/>
     <property name="formView" value="projectForm"/>
     <property name="successView" value="home"/>
+    <property name="validator" ref="projectValidator"/>
   </bean>
 
   <bean name="/uploadFile" class="ecp.spring.web.UploadController" autowire="byName">
@@ -83,4 +85,5 @@
 
   <bean name="parser" class="ecp.spring.web.PersonFileParser" autowire="byName"/>
   <bean name="personValidator" class="ecp.spring.web.PersonValidator"/>
+  <bean name="projectValidator" class="ecp.spring.web.ProjectValidator"/>
 </beans>

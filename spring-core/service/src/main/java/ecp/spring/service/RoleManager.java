@@ -7,7 +7,7 @@ public interface RoleManager{
 	List getRoles(int order, String column);
 	Role getRole(int roleId);
 	void updateRole(Role role);
-	List listRolesWithPerson(String query);
+	List listRolesWithPerson();
 	void addRole(Role role);
 	void deleteRole(int id);
 }

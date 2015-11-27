@@ -57,9 +57,29 @@ public class AddProjectController extends SimpleFormController{
 	}
 
 	@Override
+	protected ModelAndView processFormSubmission(HttpServletRequest request,
+    											 HttpServletResponse response, 
+												 Object command, 
+												 BindException errors) throws Exception { 
+		Project project = (Project) command;
+		if(errors.hasErrors()) {
+		    ModelAndView mav = new ModelAndView(getFormView());
+		    mav.addAllObjects(errors.getModel());
+		    List<PersonModel> list = personManagerImpl.listPerson(0,1,"id");
+        	mav.addObject("persons", list);
+		    return mav;
+
+		} else {
+			return onSubmit(request,response,command,errors);		
+		}
+
+	}
+
+	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request, 
 									HttpServletResponse response, 
 									Object command, BindException errors){
+		
 		Project project = (Project)command;
 		Set<Person> members = new HashSet<Person>();
 		String[] ids = request.getParameterValues("members");

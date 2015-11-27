@@ -36,6 +36,7 @@ public class IndexController extends SimpleFormController{
     	ModelAndView model = new ModelAndView("index");
 		List<PersonModel> list = personManagerImpl.listPerson(0, 1, "id");
 		model.addObject("personList",list);
+		model.addObject("roleList", roleManagerImpl.listRolesWithPerson());
         return model;
     }
 
@@ -44,9 +45,11 @@ public class IndexController extends SimpleFormController{
 									Object command, BindException errors) {
 		ModelAndView model = new ModelAndView("index");
 		String column = request.getParameter("column");
+		int id = Integer.parseInt(request.getParameter("role"));
 		int order = Integer.valueOf(request.getParameter("order"));
-		List<PersonModel> list = personManagerImpl.listPerson(0, order, column);
+		List<PersonModel> list = personManagerImpl.listPerson(id, order, column);
 		model.addObject("personList",list);
+		model.addObject("roleList", roleManagerImpl.listRolesWithPerson());
         return model;
 	}
 

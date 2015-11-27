@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<c:url value="resources/scripts.js"/>"></script></head>
 <body>
+	<jsp:include page="headers.jsp"/>
 	<h1>Person Form</h1>
 	<form:form method="POST" accept-charset="UTF-8" commandName="person">
 		<spring:message code="label.firstName"/>: <form:input path="name.firstName"/>
@@ -49,10 +50,10 @@
 		<div id="contactNumber">
 			<br>
 		<c:forEach var="c" items="${contacts}">
-			<div>${c.contactType}: <input type="text" value="${c.contactInfo}" name="contactInfo"/>
+			<div>${c.contactType}: <input type="text" value="${c.contactInfo}" name="contactInfo"/> 
 			<input type="hidden" value="${c.id}" name="contactId">
 			<input type="hidden" value="${c.contactType}" name="contactType"/>
-			<button class="delete">Remove</button></div>
+			<button class="delete">Remove</button> <!--form:errors class="error" path="contacts"/--></div>
 		</c:forEach>
 		</div>
 		<br>

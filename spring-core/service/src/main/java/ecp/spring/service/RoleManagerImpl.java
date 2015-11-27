@@ -30,9 +30,9 @@ public class RoleManagerImpl{
     roleDaoImpl.updateRole(role);
   }
 
-  public List listRolesWithPerson(String query){
+  public List listRolesWithPerson(){
     logger.info("Role Service listRolesWithPerson() method");
-    return roleDaoImpl.listRolesWithPerson(query);
+    return roleDaoImpl.listRolesWithPerson();
   }
 
   public void addRole(Role role){

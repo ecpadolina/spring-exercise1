@@ -9,5 +9,5 @@ public interface RoleDao{
 	void updateRole(Role role);
 	void addRole(Role role);
 	void deleteRole(int roleId);
-	List listRolesWithPerson(String query);
+	List listRolesWithPerson();
 }
