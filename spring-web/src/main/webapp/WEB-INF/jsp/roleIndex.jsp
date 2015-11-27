@@ -8,6 +8,8 @@
 </head>
 <body>
 	<jsp:include page="headers.jsp"/>
+	<h1>Role Management</h1>
+	<br>
 	<form method="POST">
 	Sort By: <select name="column">
 			<option value="id">Id</option>
@@ -19,6 +21,7 @@
 		</select>
 		<button type="submit">Search</button>
 	</form>
+	<br>
 	<table>
 		<thead>
 			<tr>

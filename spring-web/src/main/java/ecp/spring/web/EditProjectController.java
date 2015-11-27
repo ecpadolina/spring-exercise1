@@ -45,6 +45,7 @@ public class EditProjectController extends SimpleFormController{
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 
+	@Override
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		return projectManagerImpl.getProject(Integer.parseInt(request.getParameter("id")));
 	}

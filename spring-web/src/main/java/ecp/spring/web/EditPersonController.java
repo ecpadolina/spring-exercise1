@@ -63,12 +63,32 @@ public class EditPersonController extends SimpleFormController{
 	}
 
 	@Override
+	protected ModelAndView processFormSubmission(HttpServletRequest request,
+    											 HttpServletResponse response, 
+												 Object command, 
+												 BindException errors) throws Exception { 
+		logger.info("EditPersonController processFormSubmission() method");
+		Person person = (Person) command;
+		if(errors.hasErrors()) {
+		    ModelAndView mav = new ModelAndView(getFormView());
+		    mav.addAllObjects(errors.getModel());
+		    mav.addObject("roles", roleManagerImpl.getRoles(1, "roleId"));
+		    mav.addObject("contacts", person.getContacts());
+		    return mav;
+
+		} else {
+			return onSubmit(request,response,command,errors);		
+		}
+
+	}
+
+	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception{
 		logger.info("EditPersonController onSubmit() method");
 		HashSet<Role> roles = new HashSet<Role>();
         Person person = (Person) command;
 		Set<ContactInfo> contacts = new HashSet<ContactInfo>();
-		Set<ContactInfo> oldContacts = person.getContacts();
+		Set<ContactInfo> oldContacts;
 		String[] tempRoles = request.getParameterValues("personRoles");
 		String[] contactInfo = request.getParameterValues("contactInfo");
 		String[] contactType = request.getParameterValues("contactType");
@@ -81,8 +101,7 @@ public class EditPersonController extends SimpleFormController{
 			}
 		    person.setRoles(roles);
 		}
-		
-		person.getContacts().clear();
+
 		if(contactInfo != null){
 			for(int i = 0; i < contactInfo.length; i++){
 				ContactInfo contact = new ContactInfo();
@@ -92,6 +111,7 @@ public class EditPersonController extends SimpleFormController{
 			}
 			person.setContacts(contacts);
 		}
+
         personManagerImpl.updatePerson(person);
 		ModelAndView model = new ModelAndView();
         model.setView(new RedirectView("/"));

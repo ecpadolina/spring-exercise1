@@ -8,6 +8,8 @@
 </head>
 <body>
 	<jsp:include page="headers.jsp"/>
+	<h1>Project Management</h1>
+	<br>
 	<table>
 		<thead>
 			<tr>

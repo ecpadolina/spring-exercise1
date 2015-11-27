@@ -107,7 +107,12 @@ public class Person{
   }
   
   public void setContacts(Set<ContactInfo> contacts){
-    this.contacts = contacts;
+    if(this.contacts == null){
+      this.contacts = contacts;
+    } else {
+      this.contacts.clear();
+      this.contacts.addAll(contacts);
+    }
   }
   
   public Set<ContactInfo> getContacts(){
