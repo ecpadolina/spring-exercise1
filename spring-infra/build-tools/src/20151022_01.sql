@@ -1,6 +1,6 @@
 create table ROLES(
 	role_id SERIAL PRIMARY KEY,
-	role_type VARCHAR(15),
+	role_type VARCHAR(15)
 );
 
 INSERT INTO ROLES (role_type) values ('CEO');
