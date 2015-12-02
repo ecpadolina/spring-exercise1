@@ -28,12 +28,11 @@ public class DeletePersonController extends SimpleFormController{
 
     protected ModelAndView showForm(HttpServletRequest request, HttpServletResponse response, BindException errors) {
     	logger.info("DeletePersonController showForm() method");
-		ModelAndView model = new ModelAndView();
 		System.out.println(request.getParameter("id"));
 		Person person = personManagerImpl.getPerson(Integer.parseInt(request.getParameter("id")));
 		person.setRoles(null);
 		personManagerImpl.deletePerson(person);
-        model.setView(new RedirectView("/"));
+		ModelAndView model = new ModelAndView("redirect:/");
 		List<PersonModel> list = personManagerImpl.listPerson(0,1,"id");
 		model.addObject("personList",list);
 		return model;

@@ -6,8 +6,8 @@ import java.util.List;
 public interface PersonManager{
 	void addPerson(Person person);
 	void updatePerson(Person person);
-	void deletePerson(int personId);
-	Person getPerson(Person person);
+	void deletePerson(Person person);
+	Person getPerson(int id);
 	List listPerson(int roleId, int order, String column);
 	//List listPersonWithRoles(int roleId);
 }

@@ -113,8 +113,7 @@ public class EditPersonController extends SimpleFormController{
 		}
 
         personManagerImpl.updatePerson(person);
-		ModelAndView model = new ModelAndView();
-        model.setView(new RedirectView("/"));
+		ModelAndView model = new ModelAndView("redirect:/");
 		List<PersonModel> list = personManagerImpl.listPerson(0,1,"id");
 		model.addObject("personList",list);
         return model;

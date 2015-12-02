@@ -26,14 +26,12 @@ public class DeleteRoleController extends SimpleFormController{
 
     protected ModelAndView showForm(HttpServletRequest request, HttpServletResponse response, BindException errors) {
     	logger.info("DeleteRoleController showForm() method");
-    	logger.error("Error DeleteRoleController showForm() method ");
-		ModelAndView model = new ModelAndView();
 		System.out.println(request.getParameter("id"));
 		int id = Integer.parseInt(request.getParameter("id"));
 		Role role = roleManagerImpl.getRole(id);
 		role.setPersons(null);
 		roleManagerImpl.deleteRole(id);
-        model.setView(new RedirectView("/roleIndex"));
+		ModelAndView model = new ModelAndView("redirect:/roleIndex");
 		List<Role> list = roleManagerImpl.getRoles(1,"roleId");
 		model.addObject("roleList",list);
 		return model;

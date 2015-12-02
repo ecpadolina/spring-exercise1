@@ -4,30 +4,30 @@ import java.util.List;
 import ecp.spring.model.Project;
 import ecp.spring.dao.ProjectDaoImpl;
 
-public class ProjectManagerImpl{
-	ProjectDaoImpl projectDaoImpl;
+public class ProjectManagerImpl implements ProjectManager{
+	ProjectDaoImpl projectDao;
 
-	public void setProjectDaoImpl(ProjectDaoImpl projectDaoImpl){
-    	this.projectDaoImpl = projectDaoImpl;
+	public void setProjectDao(ProjectDaoImpl projectDao){
+    	this.projectDao = projectDao;
   	}
 
   	public List listProjects(){
-  		return projectDaoImpl.listProjects();
+  		return projectDao.listProjects();
   	}
 
   	public Project getProject(int id){
-  		return projectDaoImpl.getProject(id);
+  		return projectDao.getProject(id);
   	}
 
   	public void addProject(Project project){
-  		projectDaoImpl.addProject(project);
+  		projectDao.addProject(project);
   	}
 
   	public void deleteProject(int id){
-  		projectDaoImpl.deleteProject(id);
+  		projectDao.deleteProject(id);
   	}
 
   	public void updateProject(Project project){
-  		projectDaoImpl.updateProject(project);
+  		projectDao.updateProject(project);
   	}
 }

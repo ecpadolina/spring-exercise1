@@ -6,5 +6,5 @@
 
   <bean id="personDaoImpl" class="ecp.spring.dao.PersonDaoImpl" autowire="byName"/>
   <bean id="roleDaoImpl" class="ecp.spring.dao.RoleDaoImpl" autowire="byName"/>
-  <bean id="projectDaoImpl" class="ecp.spring.dao.ProjectDaoImpl" autowire="byName"/>
+  <bean id="projectDao" class="ecp.spring.dao.ProjectDaoImpl" autowire="byName"/>
 </beans>

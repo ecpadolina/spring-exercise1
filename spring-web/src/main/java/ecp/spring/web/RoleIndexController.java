@@ -26,6 +26,7 @@ public class RoleIndexController extends SimpleFormController{
     protected ModelAndView showForm(HttpServletRequest request, HttpServletResponse response, BindException errors) {
     	ModelAndView model = new ModelAndView("roleIndex");
 		List<Role> list = roleManagerImpl.getRoles(1, "roleId");
+
 		model.addObject("roleList",list);
         return model;
     }
@@ -33,7 +34,7 @@ public class RoleIndexController extends SimpleFormController{
   	protected ModelAndView onSubmit(HttpServletRequest request, 
 									HttpServletResponse response, 
 									Object command, BindException errors) {
-		ModelAndView model = new ModelAndView("roleIndex");
+  		ModelAndView model = new ModelAndView();
 		String column = request.getParameter("column");
 		int order = Integer.valueOf(request.getParameter("order"));
 		List<Role> list = roleManagerImpl.getRoles(order,column);

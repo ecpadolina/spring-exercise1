@@ -21,19 +21,16 @@
 
   <bean name="/deletePerson" class="ecp.spring.web.DeletePersonController" autowire="byName">
     <property name="formView" value="home"/>
-    <property name="successView" value="home"/>
   </bean>
 
   <bean name="/deleteRole" class="ecp.spring.web.DeleteRoleController" autowire="byName">
     <property name="formView" value="roleIndex"/>
-    <property name="successView" value="roleIndex"/>
   </bean>
 
   <bean name="/addPerson" class="ecp.spring.web.AddPersonController" autowire="byName">
     <property name="commandName" value="person" />
     <property name="commandClass" value="ecp.spring.model.Person" />
     <property name="formView" value="personForm"/>
-    <property name="successView" value="home"/>
     <property name="validator" ref="personValidator"/>
   </bean>
 
@@ -41,14 +38,12 @@
     <property name="commandName" value="role"/>
     <property name="commandClass" value="ecp.spring.model.Role"/>
     <property name="formView" value="roleForm"/>
-    <property name="successView" value="home"/>
   </bean>
 
   <bean name="/addProject" class="ecp.spring.web.AddProjectController" autowire="byName">
     <property name="commandName" value="project"/>
     <property name="commandClass" value="ecp.spring.model.Project"/>
     <property name="formView" value="projectForm"/>
-    <property name="successView" value="home"/>
     <property name="validator" ref="projectValidator"/>
   </bean>
 
@@ -57,7 +52,6 @@
     <property name="commandName" value="person" />
     <property name="commandClass" value="ecp.spring.model.Person" />
     <property name="formView" value="personForm"/>
-    <property name="successView" value="home"/>
     <property name="validator" ref="personValidator"/>
   </bean>
 
@@ -65,14 +59,12 @@
     <property name="commandName" value="role" />
     <property name="commandClass" value="ecp.spring.model.Role" />
     <property name="formView" value="roleForm"/>
-    <property name="successView" value="home"/>
   </bean>
 
   <bean name="/editProject" class="ecp.spring.web.EditProjectController" autowire="byName">
     <property name="commandName" value="project"/>
     <property name="commandClass" value="ecp.spring.model.Project"/>
     <property name="formView" value="projectForm"/>
-    <property name="successView" value="home"/>
     <property name="validator" ref="projectValidator"/>
   </bean>
 
@@ -80,7 +72,6 @@
     <property name="commandName" value="uploadFile" />
     <property name="commandClass" value="ecp.spring.model.FileUpload" />
     <property name="formView" value="upload"/>
-    <property name="successView" value="home"/>
   </bean>
 
   <bean name="parser" class="ecp.spring.web.PersonFileParser" autowire="byName"/>

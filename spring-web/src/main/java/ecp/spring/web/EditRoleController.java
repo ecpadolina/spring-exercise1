@@ -51,8 +51,7 @@ public class EditRoleController extends SimpleFormController{
 		logger.info("EditRoleController onSubmit() method");
 		Role role = (Role)command;
 		roleManagerImpl.updateRole(role);
-		ModelAndView model = new ModelAndView();
-		model.setView(new RedirectView("/roleIndex"));
+		ModelAndView model = new ModelAndView("redirect:/roleIndex");
 		List<Role> list = roleManagerImpl.getRoles(1,"roleId");
 		model.addObject("roleList",list);
         return model;

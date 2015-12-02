@@ -83,13 +83,14 @@ public class AddProjectController extends SimpleFormController{
 		Project project = (Project)command;
 		Set<Person> members = new HashSet<Person>();
 		String[] ids = request.getParameterValues("members");
-		for(String id : ids){
-			members.add(personManagerImpl.getPerson(Integer.parseInt(id)));
+		if(ids != null){
+			for(String id : ids){
+				members.add(personManagerImpl.getPerson(Integer.parseInt(id)));
+			}
+			project.setPersons(members);
 		}
-		project.setPersons(members);
 		projectManagerImpl.addProject(project);
-		ModelAndView model = new ModelAndView();
-		model.setView(new RedirectView("/projectIndex"));
+		ModelAndView model = new ModelAndView("redirect:/projectIndex");
 		List<Project> list = projectManagerImpl.listProjects();
 		model.addObject("projectList",list);
         return model;

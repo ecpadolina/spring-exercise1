@@ -71,13 +71,16 @@ public class EditProjectController extends SimpleFormController{
 		Project project = (Project)command;
 		Set<Person> members = new HashSet<Person>();
 		String[] ids = request.getParameterValues("members");
-		for(String id : ids){
-			members.add(personManagerImpl.getPerson(Integer.parseInt(id)));
+		if(ids != null){
+			for(String id : ids){
+				members.add(personManagerImpl.getPerson(Integer.parseInt(id)));
+			}
+			project.setPersons(members);
+		} else {
+			project.getPersons().clear();	
 		}
-		project.setPersons(members);
 		projectManagerImpl.updateProject(project);
-		ModelAndView model = new ModelAndView();
-		model.setView(new RedirectView("/projectIndex"));
+		ModelAndView model = new ModelAndView("redirect:/projectIndex");
 		List<Project> list = projectManagerImpl.listProjects();
 		model.addObject("projectList",list);
         return model;

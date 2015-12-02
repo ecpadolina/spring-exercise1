@@ -33,12 +33,11 @@ public class ProjectIndexController extends SimpleFormController{
   	protected ModelAndView onSubmit(HttpServletRequest request, 
 									HttpServletResponse response, 
 									Object command, BindException errors) {
-		ModelAndView model = new ModelAndView("projectIndex");
 		Integer id = Integer.parseInt(request.getParameter("projectId"));
 		if(id != null){
 			projectManagerImpl.deleteProject(id);
 		}
-		model.setView(new RedirectView("/projectIndex"));
+		ModelAndView model = new ModelAndView("redirect:/projectIndex");
 		List<Project> list = projectManagerImpl.listProjects();
 		model.addObject("projectList",list);
         return model;

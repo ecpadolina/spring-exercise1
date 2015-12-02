@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class PersonManagerImpl{
+public class PersonManagerImpl implements PersonManager{
 
   private PersonDaoImpl personDaoImpl;
   private final Logger logger = LoggerFactory.getLogger(PersonManagerImpl.class);

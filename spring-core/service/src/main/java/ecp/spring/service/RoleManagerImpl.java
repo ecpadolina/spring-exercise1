@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
 
-public class RoleManagerImpl{
+public class RoleManagerImpl implements RoleManager{
 
   private RoleDaoImpl roleDaoImpl;
   private final Logger logger = LoggerFactory.getLogger(RoleManagerImpl.class);
