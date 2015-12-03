@@ -21,15 +21,10 @@ public class EditRoleController extends SimpleFormController{
 	public void setRoleManagerImpl(RoleManagerImpl roleManagerImpl){
 		this.roleManagerImpl = roleManagerImpl;
 	}
-
-	public EditRoleController(){
-		setCommandClass(Role.class);
-		setCommandName("role");
-	}
-
-	protected Object formBackingObject(HttpServletRequest request) throws Exception {
+	
+	/*protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		return roleManagerImpl.getRole(Integer.parseInt(request.getParameter("id")));
-	}
+	}*/
 
 	@Override
 	protected ModelAndView showForm(HttpServletRequest request,

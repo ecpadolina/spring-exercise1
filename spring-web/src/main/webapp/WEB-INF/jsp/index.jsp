@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="headers.jsp"/>
 	<h1>Person Management</h1>
-	<form method="POST">
+	<form method="GET">
 	Sort By: <select name="column">
 			<option value="id">Id</option>
 			<option value="name.lastName">Last Name</option>
@@ -45,7 +45,8 @@
 					<td>${p.firstName} ${p.lastName}</td>
 					<td>${p.birthday}</td>
 					<td>${p.gwa}</td>
-					<td><button onclick="location.href='/deletePerson?id=${p.id}'">Delete</button><button onclick="location.href='/editPerson?id=${p.id}'">Edit</button></td>
+					<td>
+						<form method="POST"><input type="hidden" name="id" value="${p.id}"/><input type="submit" value="Delete"/></form><button onclick="location.href='/editPerson?id=${p.id}'">Edit</button></td>
 				</tr>
 			</c:forEach>     
 		</tbody>

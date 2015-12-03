@@ -36,11 +36,6 @@ public class AddPersonController extends SimpleFormController{
 		this.roleManagerImpl = roleManagerImpl;
 	}
 
-	public AddPersonController() {
-        setCommandClass(Person.class);
-        setCommandName("person");
-    }
-
 	@Override
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

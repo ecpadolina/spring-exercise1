@@ -27,7 +27,7 @@
 
   <aop:config proxy-target-class="true">
     <aop:pointcut id="serviceClasses"
-                  expression="execution(* ecp.spring.service..*(..))"/>
+                  expression="execution(* ecp.spring.service.*Impl.*(..))"/>
     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceClasses"/>
   </aop:config>
 

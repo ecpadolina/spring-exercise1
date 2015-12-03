@@ -25,11 +25,6 @@ public class AddRoleController extends SimpleFormController{
 		this.roleManagerImpl = roleManagerImpl;
 	}
 
-	public AddRoleController(){
-		setCommandClass(Role.class);
-		setCommandName("role");
-	}
-
 	@Override
 	protected ModelAndView showForm(HttpServletRequest request,
                                 HttpServletResponse response,

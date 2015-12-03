@@ -33,11 +33,6 @@ public class AddProjectController extends SimpleFormController{
 		this.projectManagerImpl = projectManagerImpl;
 	}
 
-	public AddProjectController(){
-		setCommandName("project");
-		setCommandClass(Project.class);
-	}
-
 	@Override
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

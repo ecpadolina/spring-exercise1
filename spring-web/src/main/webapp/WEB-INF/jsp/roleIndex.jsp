@@ -10,7 +10,7 @@
 	<jsp:include page="headers.jsp"/>
 	<h1>Role Management</h1>
 	<br>
-	<form method="POST">
+	<form method="GET">
 	Sort By: <select name="column">
 			<option value="id">Id</option>
 			<option value="roleType">Role Type</option>
@@ -35,7 +35,8 @@
 				<tr>
 					<td>${r.roleId}</td>
 					<td>${r.roleType}</td>
-					<td><button onclick="location.href='/deleteRole?id=${r.roleId}'">Delete</button><button onclick="location.href='/editRole?id=${r.roleId}'">Edit</button></td>
+					<td><form method="POST"><input type="hidden" name="roleId" value="${r.roleId}"/><input type="submit" value="Delete"/></form><button onclick="location.href='/editRole?id=${r.roleId}'">Edit</button>
+					<button onclick="location.href='/editRole/1'"/>Edit</button></td>
 				</tr>
 			</c:forEach>     
 		</tbody>

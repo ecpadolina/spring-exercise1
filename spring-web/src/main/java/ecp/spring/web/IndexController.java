@@ -1,9 +1,7 @@
 package ecp.spring.web;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;	
-import org.springframework.web.servlet.mvc.SimpleFormController;
+import org.springframework.web.servlet.mvc.AbstractController;
 import ecp.spring.model.PersonModel;
 import ecp.spring.model.Person;
 import ecp.spring.model.Role;
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 //@SuppressWarnings("deprecation")
-public class IndexController extends SimpleFormController{
+public class IndexController extends AbstractController{
 	PersonManagerImpl personManagerImpl;
 	RoleManagerImpl roleManagerImpl;
 
@@ -27,30 +25,25 @@ public class IndexController extends SimpleFormController{
 		this.roleManagerImpl = roleManagerImpl;
 	}
 
-
-	public IndexController() {
-        setCommandClass(PersonModel.class);
-    }
-
-    protected ModelAndView showForm(HttpServletRequest request, HttpServletResponse response, BindException errors) {
+	@Override
+    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) {
     	ModelAndView model = new ModelAndView("index");
-		List<PersonModel> list = personManagerImpl.listPerson(0, 1, "id");
-		model.addObject("personList",list);
-		model.addObject("roleList", roleManagerImpl.listRolesWithPerson());
-        return model;
-    }
-
-  	protected ModelAndView onSubmit(HttpServletRequest request, 
-									HttpServletResponse response, 
-									Object command, BindException errors) {
-		ModelAndView model = new ModelAndView("index");
-		String column = request.getParameter("column");
-		int id = Integer.parseInt(request.getParameter("role"));
-		int order = Integer.valueOf(request.getParameter("order"));
+    	String column = "id";
+    	int order = 1;
+    	int id = 0;
+    	if(request.getParameter("column") != null){
+    		column = request.getParameter("column");
+    		order = Integer.parseInt(request.getParameter("order"));
+    		id = Integer.parseInt(request.getParameter("role"));
+    	}
+    	if(request.getParameter("id") != null){
+    		Person person = personManagerImpl.getPerson(Integer.parseInt(request.getParameter("id")));
+    		person.setRoles(null);
+			personManagerImpl.deletePerson(person);
+    	}
 		List<PersonModel> list = personManagerImpl.listPerson(id, order, column);
 		model.addObject("personList",list);
 		model.addObject("roleList", roleManagerImpl.listRolesWithPerson());
         return model;
-	}
-
+    }
 }
